@@ -1,0 +1,471 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Leul Hosting</title>
+    <style>
+        :root {
+            --navy: #202957;
+            --blue: #102487;
+            --cyan: #14a9ef;
+            --green: #08d66c;
+            --yellow: #ffca32;
+            --white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            width: 100%;
+            overflow: hidden;
+            background: var(--blue);
+        }
+
+        .site-navbar {
+            position: relative;
+            z-index: 5;
+            min-height: 118px;
+            padding: 15px 0;
+        }
+
+        .header-container,
+        .hero-content {
+            width: min(1080px, calc(100% - 40px));
+            margin: 0 auto;
+        }
+
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        .host-logo {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: var(--white);
+            font-size: 35px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            text-decoration: none;
+        }
+
+        .logo-symbol {
+            color: var(--yellow);
+            font-size: 29px;
+        }
+
+        .navigation-area {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 12px;
+        }
+
+        .utility-links,
+        .main-links {
+            display: flex;
+            align-items: center;
+        }
+
+        .utility-links {
+            gap: 22px;
+        }
+
+        .utility-button,
+        .main-links .nav-link,
+        .login-button,
+        .buy-button {
+            border: 0;
+            background: none;
+            color: inherit;
+            font: inherit;
+            text-decoration: none;
+            cursor: default;
+        }
+
+        .utility-button {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: #b8b9c7;
+            font-size: 11px;
+        }
+
+        .small-icon {
+            width: 12px;
+            height: 12px;
+            fill: currentColor;
+        }
+
+        .ethiopian-flag {
+            display: inline-grid;
+            place-items: center;
+            width: 17px;
+            height: 17px;
+            border-radius: 50%;
+            background: var(--white);
+            font-size: 13px;
+        }
+
+        .main-links {
+            gap: 25px;
+        }
+
+        .main-links .nav-link {
+            color: var(--white);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 0;
+        }
+
+        .dropdown-arrow {
+            color: #00a9c7;
+            font-size: 9px;
+        }
+
+        .login-button {
+            display: inline-block;
+            background: var(--yellow);
+            color: var(--navy);
+            font-size: 11px;
+            font-weight: 800;
+            padding: 8px 14px;
+            border-radius: 4px;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-row {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            align-items: center;
+            min-height: calc(100vh - 118px);
+            gap: 60px;
+        }
+
+        .hero-text {
+            color: var(--white);
+        }
+
+        .hero-text h1 {
+            font-size: 34px;
+            font-weight: 750;
+            line-height: 1.25;
+            margin: 0 0 18px;
+        }
+
+        .hero-text h1 span {
+            display: block;
+            background: linear-gradient(90deg, var(--green), var(--cyan));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero-description {
+            max-width: 470px;
+            color: #e0e4f2;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .server-locations {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+            color: var(--white);
+            font-size: 13px;
+        }
+
+        .location-flags {
+            display: flex;
+            gap: 8px;
+            font-size: 24px;
+            letter-spacing: 2px;
+        }
+
+        .price-card-border {
+            position: relative;
+            width: 300px;
+            max-width: 100%;
+            padding: 2px;
+            border-radius: 13px;
+            background: conic-gradient(from var(--border-angle), #fff 0deg, #fff 230deg, #ffe000 260deg, #168dff 300deg, #fff 340deg);
+            animation: rotate-border 4s linear infinite;
+        }
+
+        @property --border-angle {
+            syntax: "<angle>";
+            initial-value: 0deg;
+            inherits: false;
+        }
+
+        @keyframes rotate-border {
+            to { --border-angle: 360deg; }
+        }
+
+        .price-card {
+            position: relative;
+            min-height: 405px;
+            overflow: hidden;
+            padding: 52px 24px 23px;
+            border-radius: 11px;
+            background: linear-gradient(135deg, #fffde9, #fff 60%, #e5f1ff);
+            color: var(--navy);
+        }
+
+        .price-card h2 {
+            margin: 0 0 25px;
+            color: #59616b;
+            font-size: 20px;
+            font-weight: 400;
+        }
+
+        .price-card h2 strong {
+            font-weight: 750;
+        }
+
+        .features-list {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            color: #4c5a70;
+            font-size: 12px;
+            line-height: 1.95;
+        }
+
+        .features-list li {
+            white-space: nowrap;
+        }
+
+        .features-list mark {
+            padding: 1px 3px;
+            background: var(--yellow);
+            color: #26304e;
+        }
+
+        .check {
+            margin-right: 5px;
+            color: #78d936;
+            font-weight: bold;
+        }
+
+        .lightning {
+            margin-right: 3px;
+            color: var(--yellow);
+            font-size: 19px;
+            font-weight: bold;
+        }
+
+        .cpanel {
+            margin-left: 8px;
+            color: #f15a24;
+            font-size: 17px;
+            font-style: italic;
+        }
+
+        .price {
+            margin-top: 18px;
+            color: var(--navy);
+            font-size: 34px;
+            font-weight: 800;
+        }
+
+        .price small {
+            font-size: 10px;
+            font-weight: 600;
+        }
+
+        .buy-button {
+            position: absolute;
+            right: 24px;
+            bottom: 23px;
+            left: 24px;
+            display: block;
+            padding: 13px 10px;
+            border-radius: 5px;
+            background: linear-gradient(90deg, var(--yellow), #e9c43e);
+            color: #26304e;
+            font-size: 12px;
+            font-weight: 800;
+            text-align: center;
+        }
+
+        .fastest-ribbon {
+            position: absolute;
+            top: 15px;
+            right: -35px;
+            z-index: 2;
+            width: 125px;
+            padding: 7px 0;
+            transform: rotate(45deg);
+            background: #ffe000;
+            color: #111;
+            font-size: 10px;
+            font-weight: 800;
+            text-align: center;
+        }
+
+        #shapedivider {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            z-index: 0;
+            display: block;
+            width: 100%;
+            height: 190px;
+        }
+
+        @media (max-width: 991px) {
+            .header-container {
+                align-items: flex-start;
+            }
+
+            .host-logo {
+                font-size: 28px;
+            }
+
+            .navigation-area {
+                align-items: flex-start;
+                padding-top: 10px;
+            }
+
+            .utility-links,
+            .main-links {
+                justify-content: flex-start;
+                flex-wrap: wrap;
+            }
+
+            .hero-row {
+                grid-template-columns: 1fr;
+                gap: 45px;
+                padding: 35px 0 150px;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 29px;
+            }
+
+            .hero-description {
+                margin: 0 auto;
+            }
+
+            .server-locations {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <nav class="site-navbar">
+            <div class="header-container">
+                <span class="host-logo">
+                    <span class="logo-symbol">Leul</span>
+                    <span>HOST</span>
+                </span>
+
+                <div class="navigation-area">
+                    <div class="utility-links">
+                        <span class="utility-button">
+                            <svg viewBox="0 0 24 24" class="small-icon" aria-hidden="true">
+                                <path d="M4 5h16v12H9l-5 4V5z"/>
+                            </svg>
+                            Support Chat
+                        </span>
+
+                        <span class="utility-button">
+                            <svg viewBox="0 0 24 24" class="small-icon" aria-hidden="true">
+                                <path d="M5 12l4 4L19 6" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            Service Status
+                            <span class="ethiopian-flag">🇪🇹</span>
+                        </span>
+                    </div>
+
+                    <div class="main-links">
+                        <span class="nav-link">WEB HOSTING <span class="dropdown-arrow">▼</span></span>
+                        <span class="nav-link">VPS</span>
+                        <span class="nav-link">PRICE</span>
+                        <span class="nav-link">HOW TO <span class="dropdown-arrow">▼</span></span>
+                        <span class="nav-link">CONTACT</span>
+                        <span class="login-button">♧ LOGIN</span>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <div class="hero-content">
+            <div class="hero-row">
+                <div class="hero-text">
+                    <h1>
+                        Hosting for Ethiopia's
+                        <span>Brilliant Businesses.</span>
+                    </h1>
+
+                    <p class="hero-description">
+                        Effortless Web Hosting by Leul. Affordable plans,
+                        unbeatable features, and a brilliant way to build your dream site.
+                    </p>
+
+                    <div class="server-locations">
+                        <span>Leul Server Locations:</span>
+                        <span class="location-flags" aria-label="United Kingdom, United States, Germany, and Netherlands">
+                            <span title="United Kingdom">🇬🇧</span>
+                            <span title="United States">🇺🇸</span>
+                            <span title="Germany">🇩🇪</span>
+                            <span title="Netherlands">🇳🇱</span>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="price-card-border">
+                    <div class="price-card">
+                        <div class="fastest-ribbon">FASTEST</div>
+
+                        <h2><strong>Leul PREMIUM</strong> Hosting</h2>
+
+                        <ul class="features-list">
+                            <li><span class="lightning">ϟ</span> <strong>UNLIMITED</strong> <mark>NVMe</mark> Storage</li>
+                            <li><span class="check">✔</span> <strong>UNLIMITED</strong> Bandwidth</li>
+                            <li><span class="check">✔</span> <strong>UNLIMITED</strong> Email Accounts</li>
+                            <li><span class="check">✔</span> <strong>COM</strong> Domain Included</li>
+                            <li><span class="check">✔</span> Powered by <strong class="cpanel">cPanel</strong></li>
+                        </ul>
+
+                        <div class="price">6,800 <small>Birr / year</small></div>
+                        <span class="buy-button">🛒 BUY NOW!</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <svg id="shapedivider" width="100%" height="300" viewBox="0 0 1280 140" preserveAspectRatio="none" aria-hidden="true">
+            <g fill="#ffffff">
+                <path d="M0 140h1280C573.08 140 0 0 0 0z" fill-opacity=".3"/>
+                <path d="M0 140h1280C573.08 140 0 30 0 30z" fill-opacity=".5"/>
+                <path d="M0 140h1280C573.08 140 0 60 0 60z"/>
+            </g>
+        </svg>
+    </section>
+</body>
+</html>
